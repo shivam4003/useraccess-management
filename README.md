@@ -45,7 +45,7 @@ DB_PORT=5432
 DB_USERNAME=postgres
 DB_PASSWORD=Shiv@m1996
 DB_DATABASE=useraccessdb
-JWT_SECRET=your_jwt_secret_key
+JWT_SECRET=4Yz!qP7@xW#s9Vz$Rm%2Lb8GdJfN0Eht
 ```
 
 Run backend:
