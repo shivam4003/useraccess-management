@@ -1,105 +1,104 @@
-#User Access Management System
-A complete system for managing user access to software applications with role-based permissions.
 
-Features
-User registration and authentication with JWT
-Role-based access control (Employee, Manager, Admin)
-Software listing and creation (Admin only)
-Access request submission (Employee)
-Access request approval/rejection (Manager)
-Tech Stack
-Backend: Node.js, Express.js, TypeORM
-Frontend: React, React Router, Axios
-Database: PostgreSQL
-Authentication: JWT, bcrypt
-Other tools: dotenv, nodemon
-Project Structure
-├── backend/                 # Node.js + Express backend
-│   ├── src/
-│   │   ├── config/          # Configuration files
-│   │   ├── controllers/     # API controllers
-│   │   ├── entities/        # TypeORM entities
-│   │   ├── middleware/      # Custom middleware
-│   │   ├── routes/          # API routes
-│   │   ├── utils/           # Helper functions
-│   │   └── index.ts         # Entry point
-│   ├── .env.example         # Environment variables example
-│   ├── package.json         # Backend dependencies
-│   └── tsconfig.json        # TypeScript configuration
-├── frontend/                # React frontend
-│   ├── public/              # Static files
-│   ├── src/
-│   │   ├── components/      # Reusable components
-│   │   ├── context/         # React context
-│   │   ├── pages/           # Page components
-│   │   ├── services/        # API services
-│   │   ├── utils/           # Helper functions
-│   │   ├── App.tsx          # Main App component
-│   │   └── index.tsx        # Entry point
-│   ├── package.json         # Frontend dependencies
-│   └── tsconfig.json        # TypeScript configuration
-└── README.md                # Project documentation
-Setup Instructions
-Prerequisites
-Node.js (v14+)
-PostgreSQL
-npm or yarn
-Backend Setup
-Navigate to the backend directory:
+# 🧭 User Access Management System
 
-cd backend
-Install dependencies:
+A full-stack system to handle user registration, role-based authentication, software access requests, and approvals.
 
+## 🚀 Features
+
+- ✅ User registration and login with secure password hashing
+- 🔒 JWT-based authentication
+- 👥 Role-based access control (Employee, Manager, Admin)
+- 💻 Software creation and listing (Admin only)
+- 📥 Employees can request access to software
+- ✅ Managers can approve/reject access requests
+- 📊 PostgreSQL with TypeORM entities
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer       | Technology                     |
+|-------------|--------------------------------|
+| Backend     | Node.js, Express.js, TypeORM   |
+| Frontend    | React, React Router            |
+| Database    | PostgreSQL                     |
+| Auth        | JWT, bcrypt                    |
+| Tooling     | Nodemon, dotenv                |
+
+---
+
+## 🔧 Setup Instructions
+
+### 🗂 Backend
+
+```bash
+cd user-access-backend
 npm install
-Create a .env file based on .env.example:
+````
 
-cp .env.example .env
-Update the .env file with your PostgreSQL credentials and JWT secret.
+Create a `.env` file in `user-access-backend`:
 
-Start the development server:
+```env
+PORT=5000
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=Shiv@m1996
+DB_DATABASE=useraccessdb
+JWT_SECRET=your_jwt_secret_key
+```
 
+Run backend:
+
+```bash
 npm run dev
-Frontend Setup
-Navigate to the frontend directory:
+```
 
-cd frontend
-Install dependencies:
+### 🌐 Frontend
 
+```bash
+cd user-access-frontend
 npm install
-Start the development server:
-
 npm start
-API Documentation
-Authentication
-POST /api/auth/signup - Register a new user
+```
 
-Body: { username, password }
-Response: { id, username, role }
-POST /api/auth/login - Login and get JWT token
+---
 
-Body: { username, password }
-Response: { token, user: { id, username, role } }
-Software Management (Admin only)
-GET /api/software - Get all software
+## 🧩 Database Schema
 
-Response: [{ id, name, description, accessLevels }]
-POST /api/software - Create new software
+Use the `schema.sql` file to initialize the PostgreSQL database.
 
-Body: { name, description, accessLevels }
-Response: { id, name, description, accessLevels }
-Access Requests
-GET /api/requests - Get all requests (filtered by role)
+```bash
+psql -U postgres -d useraccessdb -f schema.sql
+```
 
-Response: [{ id, user, software, accessType, reason, status }]
-POST /api/requests - Create a new access request
+---
 
-Body: { softwareId, accessType, reason }
-Response: { id, user, software, accessType, reason, status }
-PATCH /api/requests/:id - Approve or reject a request (Manager only)
+## 👤 Roles
 
-Body: { status: 'Approved' | 'Rejected' }
-Response: { id, user, software, accessType, reason, status }
-User Roles
-Employee: Can request access to software
-Manager: Can approve/reject access requests
-Admin: Can create software and has full access
+* **Employee**: Sign up, log in, request access
+* **Manager**: Approve or reject requests
+* **Admin**: Create software, full access
+
+---
+
+## 📁 Folder Structure
+
+```
+user-access-management/
+├── user-access-backend/
+│   └── src/
+├── user-access-frontend/
+│   └── src/
+└── schema.sql
+```
+
+---
+
+## 📝 License
+
+This project is for educational purposes. No license applied.
+
+```
+
+
